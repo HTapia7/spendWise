@@ -2,36 +2,45 @@
 import Link from 'next/link'
 import React from 'react'
 import { useRouter } from 'next/navigation'
-import { axios } from 'axios'
+import axios from 'axios'
 
 
 
-const LoginPage = () => {
-
+export default function LoginPage(){
+  const router = useRouter();
   const [user, setUser] = React.useState({
+
+      email: "",
       password: "",
-      username: "",
   });
 
   const onLogin = async () => {
 
-  }
+      try {
+        const response = await axios.post("/api/users/login", user)
+
+      console.log("Login Success", response.data)
+        router.push("/")
+      } catch (error:any ) {
+        console.log("login failed", error.message)
+      }
+  };
 
   return (
     <div className='flex flex-col items-center justified-center min-h-screen py-2 '>
         <h1 className='text-2xl font-bold	'>Login</h1>
         <br/>
 
-        <label htmlFor='username'>
-          Username
+        <label htmlFor='email'>
+          Email
         </label>
         <input 
           className='p-2 border border-black rounded-lg mb-4 '
-          id='username'
+          id='email'
           type='text'
-          value={user.username}
-          onChange={(e) => setUser ({...user, username: e.target.value})}
-          placeholder='Username'
+          value={user.email}
+          onChange={(e) => setUser ({...user, email: e.target.value})}
+          placeholder='Email'
         />
 
         <label htmlFor='password'>
@@ -58,4 +67,3 @@ const LoginPage = () => {
   )
 };
 
-export default LoginPage

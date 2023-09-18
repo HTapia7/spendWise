@@ -15,7 +15,7 @@ const signUpPage = () => {
       username: "",
   });
 
-  const [buttonDisabaled, setButtonDisabled] = React.useState(false);  
+ 
   const onSignup = async () => {
 
         try {
