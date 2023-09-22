@@ -21,21 +21,17 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className='flex flex-col items-center justified-center min-h-screen py-2'>
+    <div className='flex flex-col items-center justified-center min-h-screen py-2 '>
 
-      <h1>Profile</h1>
-      <p>Profile page</p>
-
-
-    <hr/>
-
-    <button 
-          className='p-2 border border-black rounded-lg mb-4 bg-green-500'
-          onClick={logout}
-          >
-          Logout
+        <h1>Welcome</h1>
+        <hr/>
+        <button 
+            className='p-2 border border-black rounded-lg mb-4 bg-green-500 '
+            onClick={logout}
+            >
+            Logout
         </button>
+
     </div>
   )
 };
-
