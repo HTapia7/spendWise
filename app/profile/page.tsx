@@ -2,6 +2,7 @@
 import axios from "axios"
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import DisplayExpense   from "../../components/DisplayExpenses.jsx"
 
 
 
@@ -19,6 +20,7 @@ export default function ProfilePage() {
       console.log(error.message)
     }
   }
+
 
   return (
     <div className='flex flex-col items-center justified-center min-h-screen py-2 '>
@@ -89,10 +91,14 @@ export default function ProfilePage() {
         <button 
           className='p-2 border border-black rounded-lg mb-4 bg-green-500'
           // onClick={onLogin}
+          type="submit"
           >
           Submit
         </button>
 
+        <div>
+          {/* <DisplayExpense/> */}
+        </div>
       </div>
     </div>
   )
