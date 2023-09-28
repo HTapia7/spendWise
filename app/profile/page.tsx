@@ -1,9 +1,7 @@
 "use client";
 import axios from "axios"
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import DisplayExpense   from "../../components/DisplayExpenses.jsx"
-
 
 
 export default function ProfilePage() {
@@ -97,7 +95,7 @@ export default function ProfilePage() {
         </button>
 
         <div>
-          {/* <DisplayExpense/> */}
+          <DisplayExpense/>
         </div>
       </div>
     </div>

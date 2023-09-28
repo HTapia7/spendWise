@@ -11,7 +11,7 @@ const Navbar = () => {
             alt='Spend Wise Logo'     
             width={90}
             height={90}
-            className='rounded-2xl	'
+            className='rounded-2xl'
           />
           <p className=''>Spend Wise</p>
       </Link>
@@ -26,6 +26,6 @@ const Navbar = () => {
 
     </nav>
   )
-}
+};
 
-export default Navbar
+export default Navbar;

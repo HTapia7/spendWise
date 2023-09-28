@@ -1,39 +1,45 @@
-import React , { useState , useEffect }from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const displayExpenses = () => {
+const DisplayExpenses = () => {
+  const [expenses, setExpenses] = useState([]);
 
-    const [expenses, setExpenses ] = useState([]);
-    const [loading , setLoading] = useState(true);
+  useEffect(() => {
+    const fetchExpenses = async () => {
+      try {
+        const response = await axios.get(
+          'http://localhost:3000/api/expenses/get-Expense'
+        );
 
-    useEffect(() => {
+        if (response.status === 200) {
+    
+          const data = response.data;
 
-        axios.get('https://localhost:3000')
-            .then(response => {
-                setExpenses(response.data);
-                setLoading(false)
-            })
-            .catch(error => {
-                console.error("Error fetching data" , error )
-                setLoading(false)
-            });
+          // Check if data.expense is an array before setting the state
+          if (Array.isArray(data.expense)) {
+            setExpenses(data.expense);
+          } else {
+            console.error('Expense data from API is not an array:', data.expense);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching expenses:', error);
+      }
+    };
 
-    }, [])
+    fetchExpenses(); // Call the function to fetch expenses when the component mounts
+  }, []);
 
   return (
     <div>
-        { loading ? (
-            <p>loading...</p>
-        ) : (
-
-            <ul>
-            {expenses.map( expense => (
-                <li key={expense.id}> {isTemplateExpression.title}</li>
-            ))}
-            </ul>
-        )}
+      {expenses.map((expense) => (
+        <div key={expense._id}>
+          <h2>Title: {expense.title}</h2>
+          <h2>Amount: {expense.amount}</h2>
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default displayExpenses
+export default DisplayExpenses;
