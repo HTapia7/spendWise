@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import EditButton from './EditButton'
+import DeleteButton from './DeleteButton'
 
 const DisplayExpenses = () => {
   const [expenses, setExpenses] = useState([]);
@@ -31,12 +33,14 @@ const DisplayExpenses = () => {
   }, []);
 
   return (
-    <div>
+    <div className='flex'>
       {expenses.map((expense) => (
-        <div key={expense._id}>
-          <h2>Title: {expense.title}</h2>
-          <h2>Amount: {expense.amount}</h2>
-        </div>
+          <div key={expense._id} className='outline outline-offset-2 outline-black-500 rounded p-4 w-96	' >
+            <h2>Title: {expense.title}</h2>
+            <h2>Amount: {expense.amount}</h2>
+            <DeleteButton/>
+            <EditButton/>
+          </div>
       ))}
     </div>
   );
