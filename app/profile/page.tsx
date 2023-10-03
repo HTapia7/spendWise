@@ -19,85 +19,87 @@ export default function ProfilePage() {
     }
   }
 
-
   return (
-    <div className='flex flex-col items-center justified-center min-h-screen py-2 '>
+    <div className="flex justify-center items-start min-h-screen py-2">
+    <div className="w-1/2 px-4">
+    <h1 className="text-2xl font-semibold mb-4">Welcome</h1>
+    <hr className="w-1/2 mb-4" />
+    <button
+      className="p-2 border border-black rounded-lg mb-4 bg-green-500"
+      onClick={logout}
+    >
+      Logout
+    </button>
 
-        <h1>Welcome</h1>
-        <hr/>
-        <button 
-            className='p-2 border border-black rounded-lg mb-4 bg-green-500 '
-            onClick={logout}
-            >
-            Logout
-        </button>
+    <div className="w-full">
+      <label htmlFor="title" className="mb-2 block">
+        Title:
+      </label>
+      <input
+        className="p-2 border border-black rounded-lg mb-4 w-full"
+        id="title"
+        type="text"
+        placeholder="Title"
+      />
 
-      <div className='flex flex-col items-center justified-start min-h-screen py-2 '>
-        <label htmlFor='title'>
-              Title: 
-            </label>
-            <input 
-              className='p-2 border border-black rounded-lg mb-4 '
-              id='title'
-              type='text'
-              // value={}
-              placeholder='Title'
-        />
+      <label htmlFor="amount" className="mb-2 block">
+        Amount:
+      </label>
+      <input
+        className="p-2 border border-black rounded-lg mb-4 w-full"
+        id="amount"
+        type="number"
+        placeholder="Amount"
+      />
 
-        <label htmlFor='amount'>
-              Amount: 
-        </label>
-            <input 
-              className='p-2 border border-black rounded-lg mb-4 '
-              id='amount'
-              type='number'
-              // value={}
-              placeholder='Amount'
-        />
+      <label htmlFor="date" className="mb-2 block">
+        Date:
+      </label>
+      <input
+        className="p-2 border border-black rounded-lg mb-4 w-full"
+        id="date"
+        type="date"
+      />
 
-        <label htmlFor='date'>
-              Date: 
-        </label>
-            <input 
-              className='p-2 border border-black rounded-lg mb-4 '
-              id='date'
-              type='date'
-              // value={}
-        />
+      <label htmlFor="category" className="mb-2 block">
+        Category:
+      </label>
+      <select
+        id="category"
+        name="category"
+        className="p-2 border border-black rounded-lg mb-4 w-full"
+      >
+        <option value="fun">Fun</option>
+        <option value="bill">Bills</option>
+        <option value="gas">Gas</option>
+        <option value="food">Food</option>
+        <option value="emergency">Emergency</option>
+      </select>
 
-        <label htmlFor='category'>
-              Category: 
-        </label>
-        <select id="category" name="category" className="p-2 border border-black rounded-lg mb-4 ">
-          <option value="fun">Fun</option>
-          <option value="bill">Bills</option>
-          <option value="gas">Gas</option>
-          <option value="food">Food</option>
-        </select>
+      <label htmlFor="description" className="mb-2 block">
+        Description:
+      </label>
+      <input
+        className="p-2 border border-black rounded-lg mb-4 w-full"
+        id="description"
+        type="text"
+        placeholder="Write a brief description"
+      />
 
-        <label htmlFor='description'>
-              Description: 
-        </label>
-            <input 
-              className='p-2 border border-black rounded-lg mb-4 '
-              id='description'
-              type='text'
-              // value={}
-              placeholder='Write a brief description'
-        />
-
-        <button 
-          className='p-2 border border-black rounded-lg mb-4 bg-green-500'
-          // onClick={onLogin}
-          type="submit"
-          >
-          Submit
-        </button>
-
-        <div>
-          <DisplayExpense/>
-        </div>
-      </div>
+      <button
+        className="p-2 border border-black rounded-lg mb-4 bg-green-500"
+        type="submit"
+      >
+        Submit
+      </button>
     </div>
+  </div>
+
+
+  <div className="w-1/2 px-4">
+    <DisplayExpense />
+  </div>
+</div>
+
   )
 };
