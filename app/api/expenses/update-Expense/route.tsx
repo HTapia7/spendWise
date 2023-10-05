@@ -11,11 +11,28 @@ export async function PUT(request: NextRequest){
     try {
        
         const reqBody = await request.json()
-        const { id } = reqBody;
+        
+        const { _id, title, amount, category, date, description } = reqBody;
 
-        const edited = await Expenses.findByIdAndUpdate(id, reqBody)
+        const updatedExpense = await Expenses.findByIdAndUpdate(
+            _id,
+            {
+              title,
+              amount,
+              category,
+              date,
+              description,
+            },
+            { new: true }
+          );
+            console.log(updatedExpense)
+          
+          if (!updatedExpense) {
+            return NextResponse.json({ error: 'Expense not found' });
+          }
+    
+          return NextResponse.json({ message: 'Expense updated successfully', updatedExpense });
 
-       return NextResponse.json({ message: "Update added", success: true });
 
     } catch (error) {
         return NextResponse.json({error: error.message}, {status: 500})
