@@ -2,15 +2,12 @@ import  { connect } from "db/dbconfig.js";
 import Expenses from "models/Expenses.js";
 import { NextRequest , NextResponse } from "next/server";
 
-
-
 connect();
-
 
 export async function PUT(request: NextRequest){
     try {
        
-        const reqBody = await request.json()
+        const reqBody = await request.json();
         
         const { _id, title, amount, category, date, description } = reqBody;
 
@@ -32,7 +29,6 @@ export async function PUT(request: NextRequest){
           }
     
           return NextResponse.json({ message: 'Expense updated successfully', updatedExpense });
-
 
     } catch (error) {
         return NextResponse.json({error: error.message}, {status: 500})
